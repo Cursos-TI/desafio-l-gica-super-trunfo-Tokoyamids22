@@ -4,7 +4,7 @@ int main (){
     // Carta 1
     char estado1[20], codigo1[10], nome1[30];
     unsigned long int populacao1;
-    int pontos1;
+    int pontos1, escolhacarta;
     float area1, pib1, densidade1, capita1, super1;
 
     // Carta 2
@@ -97,24 +97,68 @@ int main (){
     printf("PIB per Capita: %.2f\n", capita2);
     printf("Super Poder: %.2f\n", super2);
 
-    // --------- COMPARAÇÃO ---------
     printf("\n================ COMPARAÇÃO DE CARTAS! ================\n");
-    
-    printf("População: ");
-    if (populacao1 > populacao2)
-    {
-        printf("Carta 1 venceu! \n");
-    } else {
-        printf("Carta 2 venceu! \n");
-    }
-    
-    /*printf("População: %d\n", populacao1 > populacao2);
-    printf("Área: %d\n", area1 > area2);
-    printf("PIB: %d\n", pib1 > pib2);
-    printf("Pontos Turísticos: %d\n", pontos1 > pontos2);
-    printf("Densidade Populacional: %d\n", densidade1 > densidade2);
-    printf("PIB per Capita: %d\n", capita1 > capita2);
-    printf("Super Poder: %d\n", super1 > super2);*/
 
+printf("Escolha o atributo para comparar:\n");
+printf("1. População\n");
+printf("2. Área\n");
+printf("3. PIB\n");
+printf("4. Pontos Turísticos\n");
+printf("5. Densidade Demográfica\n");
+
+printf("Digite o número da opção: ");
+scanf("%d", &escolhacarta);
+
+float valor1, valor2;
+
+if (escolhacarta == 1) {
+    printf("\n--- Comparando: População ---\n");
+    valor1 = populacao1;
+    valor2 = populacao2;
+}
+else if (escolhacarta == 2) {
+    printf("\n--- Comparando: Área ---\n");
+    valor1 = area1;
+    valor2 = area2;
+}
+else if (escolhacarta == 3) {
+    printf("\n--- Comparando: PIB ---\n");
+    valor1 = pib1;
+    valor2 = pib2;
+}
+else if (escolhacarta == 4) {
+    printf("\n--- Comparando: Pontos Turísticos ---\n");
+    valor1 = pontos1;
+    valor2 = pontos2;
+}
+else if (escolhacarta == 5) {
+    printf("\n--- Comparando: Densidade Demográfica ---\n");
+    valor1 = densidade1;
+    valor2 = densidade2;
+}
+else {
+    printf("Opção inválida!\n");
     return 0;
+}
+
+// Valores das cartas.
+printf("%s: %.2f\n", nome1, valor1);
+printf("%s: %.2f\n", nome2, valor2);
+
+// Menor densidade vence, resto maior vence. 
+if (escolhacarta == 5) { // Densidade
+    if (valor1 < valor2)
+        printf("\n %s venceu! (menor densidade)\n", nome1);
+    else if (valor2 < valor1)
+        printf("\n %s venceu! (menor densidade)\n", nome2);
+    else
+        printf("\n Empate!\n");
+}
+else { // Atributos normais
+    if (valor1 > valor2)
+        printf("\n %s venceu! (maior valor)\n", nome1);
+    else if (valor2 > valor1)
+        printf("\n %s venceu! (maior valor)\n", nome2);
+    else
+        printf("\n Empate!\n"); }
 }
